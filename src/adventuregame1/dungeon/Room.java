@@ -1,35 +1,27 @@
 package adventuregame1.dungeon;
 
 public class Room {
-    
+
     private String description;
-    private String east,west,north,south;
+    private Room east, west, north, south;
 
-    public Room(String description, String east, String west, String north, String south) {
-        this.description = description;
-        this.east = east;
-        this.west = west;
-        this.north = north;
-        this.south = south;
-    }
-
-    public void setDescription(String description) {
+    public Room(String description) {
         this.description = description;
     }
 
-    public void setEast(String east) {
+    public void setEast(Room east) {
         this.east = east;
     }
 
-    public void setWest(String west) {
+    public void setWest(Room west) {
         this.west = west;
     }
 
-    public void setNorth(String north) {
+    public void setNorth(Room north) {
         this.north = north;
     }
 
-    public void setSouth(String south) {
+    public void setSouth(Room south) {
         this.south = south;
     }
 
@@ -37,21 +29,20 @@ public class Room {
         return description;
     }
 
-    public String getEast() {
+    public Room getEast() {
         return east;
     }
 
-    public String getWest() {
+    public Room getWest() {
         return west;
     }
 
-    public String getNorth() {
+    public Room getNorth() {
         return north;
     }
 
-    public String getSouth() {
+    public Room getSouth() {
         return south;
     }
-    
-    
+
 }

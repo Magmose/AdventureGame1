@@ -1,19 +1,22 @@
 package adventuregame1;
 
+import adventuregame1.dungeon.Dungeon;
+import adventuregame1.dungeon.Room;
 import java.util.Scanner;
 
 public class Game {
 
     Scanner sc = new Scanner(System.in);
-
+    Dungeon dungeon = new Dungeon();
     public void go() {
+        dungeon.createRooms();
         gameStart();
         commandInput();
-        
+
     }
 
+
     public void gameStart() {
-        
 
         System.out.println("Welcome to the magical adventure game! \nWould you like the instructions ? ");
         String startAnswer = sc.nextLine();
