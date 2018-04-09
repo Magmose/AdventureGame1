@@ -1,4 +1,4 @@
-package adventuregame1.dungeon;
+package adventuregame1;
 
 
 public class Help {
