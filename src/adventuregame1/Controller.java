@@ -26,16 +26,16 @@ public class Controller {
         String dir = tui.ask();
         action = ac.convert(dir);
 
-        if (dir.equalsIgnoreCase("quit")) {
-            tui.quitter();
-            System.exit(0);
-        }
-
-        if (dir.equalsIgnoreCase("help")) {
-            tui.helper();
-        }
-
         while (action == null) {
+            if (dir.equalsIgnoreCase("help")) {
+                tui.helper();
+            }
+
+            if (dir.equalsIgnoreCase("quit")) {
+                tui.quitter();
+                System.exit(0);
+            }
+            
             tui.errorInput();
             dir = tui.ask();
             action = ac.convert(dir);

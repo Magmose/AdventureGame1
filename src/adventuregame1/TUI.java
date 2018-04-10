@@ -39,7 +39,7 @@ public class TUI {
     }
 
     void helper() {
-        System.out.println("All you can do in this game is use your compass..\n"
+        System.out.println("All you can do in this game is use your compass...\n"
                 + "You can only go north, south, east or west in this game\n"
                 + "Remember to spell it correctly");
     }
