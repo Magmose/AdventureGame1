@@ -2,7 +2,7 @@ package adventuregame1.dungeon;
 
 public class Dungeon {
 
-    public void createRooms() {
+    public Room createRooms() {
         Room start = new Room("Start: You are waking up at the entrance of an abandoned old Chateau." +
                 "The door to the outside is locked and needs a special password to be unlocked");
         Room room1 = new Room("This is a grand hall. \nFrom here you can go to the Billiard Room and to the lounge");
@@ -126,5 +126,6 @@ public class Dungeon {
         //room 19 = small bedroom 3
         room19.setNorth(room15);
         
+        return start;
     }
 }

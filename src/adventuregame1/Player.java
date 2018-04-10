@@ -1,14 +1,14 @@
 package adventuregame1;
 
+import adventuregame1.dungeon.Room;
+
+
 public class Player {
 
     private String name;
     private int health;
+    private Room location;
 
-    public Player(String name, int health) {
-        this.name = name;
-        this.health = health;
-    }
 
     public String getName() {
         return name;
@@ -23,7 +23,22 @@ public class Player {
     }
 
     public void setHealth(int health) {
-        this.health = 100;
+        this.health = health;
+    }
+
+    public void setLocation(Room location) {
+        this.location = location;
+        
+    }
+
+    public Player(String name, int health, Room location) {
+        this.name = name;
+        this.health = health;
+        this.location = location;
+    }
+
+    public Room getLocation() {
+        return location;
     }
 
 }

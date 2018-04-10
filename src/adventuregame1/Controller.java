@@ -6,53 +6,50 @@ import java.util.Scanner;
 
 public class Controller {
 
-    Scanner sc = new Scanner(System.in);
+    TUI tui = new TUI();
     Dungeon dungeon = new Dungeon();
+
     public void go() {
-        dungeon.createRooms();
-        gameStart();
-        commandInput();
+        Room start = dungeon.createRooms();
+        gameMove(start);
 
     }
 
+    public void gameMove(Room start) {
 
-    public void gameStart() {
+        Player p = new Player("", 0, start);
+        String dir = tui.ask();
+        ActionConverter ac = new ActionConverter();
+        Action action = ac.convert(dir);
+        while (action != null) {
+            switch (action) {
+                case GoNorth:
+                    Room location = p.getLocation();
+                    p.setLocation(location.getNorth());
+                    tui.printDesc(location.getDescription());
+                    break;
 
-        System.out.println("Welcome to the magical adventure game! \nWould you like the instructions ? ");
-        String startAnswer = sc.nextLine();
+                case GoSouth:
+                    location = p.getLocation();
+                    p.setLocation(location.getSouth());
+                    tui.printDesc(location.getDescription());
+                    break;
 
-        if (startAnswer.toLowerCase().equals("yes")) {
-            System.out.println("There is no story at this point... \n"
-                    + "You will have the aility to direct aroud in this world by using commands of one or two words \n"
-                    + "If you are stuck you will have the ability to write \"HELP\" for hints or \"QUIT\" if you give up.");
+                case GoEast:
+                    location = p.getLocation();
+                    p.setLocation(location.getEast());
+                    tui.printDesc(location.getDescription());
+                    break;
+
+                case GoWest:
+                    location = p.getLocation();
+                    p.setLocation(location.getWest());
+                    tui.printDesc(location.getDescription());
+                    break;
+
+            }
         }
-        if (startAnswer.toLowerCase().equals("no")) {
-            commandQuit();
-        }
 
     }
 
-    public void commandInput() {
-        String answer = sc.nextLine();
-
-        if (answer.toLowerCase().equals("help")) {
-            commandHelp();
-        }
-        if (answer.toLowerCase().equals("quit")) {
-            commandQuit();
-        }
-
-    }
-
-    public void commandQuit() {
-        System.out.println("Game Stopped");
-        System.exit(0);
-    }
-
-    public String commandHelp() {
-        String s = new Help().getCommand();
-        System.out.println("HELP");
-        return s;
-
-    }
 }
