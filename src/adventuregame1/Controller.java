@@ -11,6 +11,7 @@ public class Controller {
 
     public void go() {
         Room start = dungeon.createRooms();
+        tui.intro();
         tui.printDesc(start.getDescription());
         Player p = new Player("", 0, start);
         while (true) {
@@ -24,6 +25,16 @@ public class Controller {
         Action action;
         String dir = tui.ask();
         action = ac.convert(dir);
+
+        if (dir.equalsIgnoreCase("quit")) {
+            tui.quitter();
+            System.exit(0);
+        }
+
+        if (dir.equalsIgnoreCase("help")) {
+            tui.helper();
+        }
+
         while (action == null) {
             tui.errorInput();
             dir = tui.ask();
