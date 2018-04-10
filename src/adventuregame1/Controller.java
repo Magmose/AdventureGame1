@@ -11,44 +11,50 @@ public class Controller {
 
     public void go() {
         Room start = dungeon.createRooms();
-        gameMove(start);
+        tui.printDesc(start.getDescription());
+        Player p = new Player("", 0, start);
+        while (true) {
+            gameMove(start, p);
+        }
 
     }
 
-    public void gameMove(Room start) {
-
-        Player p = new Player("", 0, start);
-        String dir = tui.ask();
+    public void gameMove(Room start, Player p) {
         ActionConverter ac = new ActionConverter();
-        Action action = ac.convert(dir);
-        while (action != null) {
-            switch (action) {
-                case GoNorth:
-                    Room location = p.getLocation();
-                    p.setLocation(location.getNorth());
-                    tui.printDesc(location.getDescription());
-                    break;
-
-                case GoSouth:
-                    location = p.getLocation();
-                    p.setLocation(location.getSouth());
-                    tui.printDesc(location.getDescription());
-                    break;
-
-                case GoEast:
-                    location = p.getLocation();
-                    p.setLocation(location.getEast());
-                    tui.printDesc(location.getDescription());
-                    break;
-
-                case GoWest:
-                    location = p.getLocation();
-                    p.setLocation(location.getWest());
-                    tui.printDesc(location.getDescription());
-                    break;
-
-            }
+        Action action;
+        String dir = tui.ask();
+        action = ac.convert(dir);
+        while (action == null) {
+            tui.errorInput();
+            dir = tui.ask();
+            action = ac.convert(dir);
         }
+        Room location = p.getLocation();
+        Room newLocation = null;
+        switch (action) {
+            case GoNorth:
+                newLocation = location.getNorth();
+                break;
+
+            case GoSouth:
+                newLocation = location.getSouth();
+                break;
+
+            case GoEast:
+                newLocation = location.getEast();
+                break;
+
+            case GoWest:
+                newLocation = location.getWest();
+                break;
+
+        }
+        if (newLocation == null) {
+            tui.errorDirection();
+            return;
+        }
+        p.setLocation(newLocation);
+        tui.printDesc(p.getLocation().getDescription());
 
     }
 
