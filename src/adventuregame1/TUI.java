@@ -9,6 +9,6 @@ package adventuregame1;
  *
  * @author Rasmu
  */
-public class UI {
+public class TUI {
     
 }

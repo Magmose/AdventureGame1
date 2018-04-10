@@ -4,7 +4,7 @@ import adventuregame1.dungeon.Dungeon;
 import adventuregame1.dungeon.Room;
 import java.util.Scanner;
 
-public class Game {
+public class Controller {
 
     Scanner sc = new Scanner(System.in);
     Dungeon dungeon = new Dungeon();

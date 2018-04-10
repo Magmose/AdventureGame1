@@ -4,7 +4,7 @@ public class MainGame {
 
 
     public static void main(String[] args) {
-       new Game().go();
+       new Controller().go();
     }
 
 }
