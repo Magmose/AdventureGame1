@@ -8,7 +8,8 @@ public class Dungeon {
         Room room1 = new Room("This is a grand hall. \nFrom here you can go to the Billiard Room and to the lounge");
         Room room2 = new Room("This is the lounge room. \nFrom here you can go to a narrow hallway or up a small staircase ");
         Room room3 = new Room("This is a grand staircase to the second floor of the house");
-        Room room4 = new Room("This is the Billiard Room ");
+        Room room4 = new Room("This is the Billiard Room. There is nothing here \n"+ 
+                "You can go back north");
         Room room5 = new Room("This is a narrow hallway." +
                 "\nAll the foors are locked. It seems to have been chambers for servants." +
                 "\ndo you want to go further through the hallways or go back?");
