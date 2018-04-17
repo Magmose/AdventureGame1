@@ -9,7 +9,6 @@ public class Player {
     private int health;
     private Room location;
 
-
     public String getName() {
         return name;
     }
