@@ -32,6 +32,7 @@ public class TUI {
 
     void errorDirection() {
         System.out.println("No room exists in that direction, try something else adventurer");
+        
     }
 
     void quitter() {

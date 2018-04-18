@@ -22,7 +22,7 @@ class ActionConverter {
         } else if (dir.equalsIgnoreCase("west")) {
             return Action.GoWest;
         } else {
-            return null;
+            throw new IllegalArgumentException();
         }
 
     }

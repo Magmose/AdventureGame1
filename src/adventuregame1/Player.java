@@ -42,9 +42,11 @@ public class Player {
         this.health += health;
     }
 
-    public void setLocation(Room location) {
+    public boolean setLocation(Room location) {
         this.location = location;
-
+        if (location == null)
+            return false;
+        return true;
     }
 
     public Room getLocation() {

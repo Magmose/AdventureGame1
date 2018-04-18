@@ -1,5 +1,8 @@
 package Logic;
 
+import Item.Item;
+import Item.Potion;
+import Item.Weapon;
 import adventuregame1.Player;
 import adventuregame1.dungeon.Dungeon;
 import adventuregame1.dungeon.Room;
@@ -24,14 +27,37 @@ public class PlayerTest {
         assertEquals(startDescription, player.getLocation().getDescription());
     }
 
-//    @Test
-//    public void testGoNorthWhenThereIsNoNorthRoom() {
-//        Dungeon d = new Dungeon();
-//        Room start = d.createRooms();
-//        Player player = new Player("", start);
-//        Action.
-//
-//        boolean result
-//        assertFalse(result);
-//    }
+    @Test
+    public void testGoNorthWhenThereIsNoNorthRoom() {
+        Dungeon d = new Dungeon();
+        Room start = d.createRooms();
+        Player player = new Player("", start);
+
+        boolean result = player.setLocation(start.getNorth());
+        assertFalse(result);
+    }
+
+    @Test
+    public void testGoSouthWhenThereIsSouthRoom() {
+        Dungeon d = new Dungeon();
+        Room start = d.createRooms();
+        Player player = new Player("", start);
+
+        boolean result = player.setLocation(start.getSouth());
+        assertTrue(result);
+    }
+
+  
+
+    @Test
+    public void testPlayerHealth() {
+        Dungeon d = new Dungeon();
+        Room start = d.createRooms();
+        Player player = new Player("", start);
+        Item item = new Potion("health potion", "heals you", 4);
+        
+        item.use(player);
+        assertEquals("Player health modified", player.getHealth(), 104);
+    }
+
 }
