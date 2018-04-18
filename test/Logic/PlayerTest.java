@@ -47,17 +47,27 @@ public class PlayerTest {
         assertTrue(result);
     }
 
-  
-
     @Test
     public void testPlayerHealth() {
         Dungeon d = new Dungeon();
         Room start = d.createRooms();
         Player player = new Player("", start);
         Item item = new Potion("health potion", "heals you", 4);
-        
+
         item.use(player);
         assertEquals("Player health modified", player.getHealth(), 104);
     }
-
+    
+    
+    @Test
+    public void testPlayerInventory() {
+        Dungeon d = new Dungeon();
+        Room start = d.createRooms();
+        Player player = new Player("", start);
+        Item item = new Potion("health potion", "heals you ", 4);
+        player.Addinventory(item);
+        
+        assertEquals("Player inventory", player.getInventory(), item);
+    }
+    
 }

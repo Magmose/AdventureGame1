@@ -1,7 +1,9 @@
 
 package adventuregame1;
 
+import Item.Item;
 import adventuregame1.dungeon.Room;
+import java.util.ArrayList;
 
 public class Player {
 
@@ -9,6 +11,12 @@ public class Player {
     private int health;
     private int damage;
     private Room location;
+    private ArrayList<Item> inventory = new ArrayList();
+    
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+    
 //    private static final int DAMAGE_FROM_START = 10;
 
     public Player(String name, Room location) {
@@ -40,6 +48,11 @@ public class Player {
 
     public void setHealth(int health) {
         this.health += health;
+    }
+    
+    public void Addinventory(Item s)
+    {
+        inventory.add(s);
     }
 
     public boolean setLocation(Room location) {

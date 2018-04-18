@@ -10,5 +10,5 @@ package adventuregame1;
  * @author Christian
  */
 public enum Action {
-    GoNorth, GoSouth, GoWest, GoEast;
+    GoNorth, GoSouth, GoWest, GoEast, Help, Quit, Use;
 }

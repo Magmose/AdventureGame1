@@ -2,13 +2,14 @@ package adventuregame1;
 
 import adventuregame1.dungeon.Dungeon;
 import adventuregame1.dungeon.Room;
+import java.util.Scanner;
 
 public class Controller {
 
     TUI tui = new TUI();
     Dungeon dungeon = new Dungeon();
     ActionConverter ac = new ActionConverter();
-    Action action;
+    Action movementAction, notMovementAction;
 
     public void go() {
         Room start = dungeon.createRooms();
@@ -24,22 +25,14 @@ public class Controller {
     public void gameMove(Room start, Player p) {
 
         String dir = tui.ask();
-        action = ac.convert(dir);
+        movementAction = ac.convertMovement(dir);
+        notMovementAction = ac.convertAction(dir);
 
-        while (action == null) {
-            if (dir.equalsIgnoreCase("help")) {
-                tui.helper();
-            }
-
-            if (dir.equalsIgnoreCase("quit")) {
-                tui.quitter();
-                System.exit(0);
-            }
-            // Lav if(dir.equalsIgnorecase("quit")) til use item
-            
-            tui.errorInput();
+        while (movementAction == null) {
+            handleNotMovement();
             dir = tui.ask();
-            action = ac.convert(dir);
+            movementAction = ac.convertMovement(dir);
+            notMovementAction = ac.convertAction(dir);
         }
         switchCaseGameMovement(p);
 
@@ -48,7 +41,7 @@ public class Controller {
     private void switchCaseGameMovement(Player p) {
         Room location = p.getLocation();
         Room newLocation = null;
-        switch (action) {
+        switch (movementAction) {
             case GoNorth:
                 newLocation = location.getNorth();
                 break;
@@ -73,6 +66,30 @@ public class Controller {
         }
         p.setLocation(newLocation);
         tui.printDesc(p.getLocation().getDescription());
+    }
+
+    public void handleNotMovement() {
+        if (notMovementAction == null) {
+            tui.errorInput();
+        } else {
+            switch (notMovementAction) {
+                case Help:
+                    tui.helper();
+                    break;
+
+                case Quit:
+                    tui.quitter();
+                    System.exit(0);
+                    break;
+
+                case Use:
+                    //tilføj use case
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 
 }

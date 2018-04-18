@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package adventuregame1;
 
 /**
@@ -11,7 +6,7 @@ package adventuregame1;
  */
 class ActionConverter {
 
-    Action convert(String dir) {
+    Action convertMovement(String dir) {
 
         if (dir.equalsIgnoreCase("north")) {
             return Action.GoNorth;
@@ -22,8 +17,18 @@ class ActionConverter {
         } else if (dir.equalsIgnoreCase("west")) {
             return Action.GoWest;
         } else {
-            throw new IllegalArgumentException();
+            return null;
         }
-
     }
+
+    Action convertAction(String dir) {
+        if (dir.equalsIgnoreCase("help")) {
+            return Action.Help;
+        } else if (dir.equalsIgnoreCase("quit")) {
+            return Action.Quit;
+        } else if (dir.equalsIgnoreCase("use")) {
+            return Action.Use;
+        } else 
+            return null;
+        }
 }
