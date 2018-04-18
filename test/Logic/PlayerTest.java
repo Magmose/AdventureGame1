@@ -16,7 +16,7 @@ public class PlayerTest {
     public void testCreatePlayerInStartRoom() {
         Dungeon d = new Dungeon();
         Room start = d.createRooms();
-        Player player = new Player("", 0, start);
+        Player player = new Player("", start);
         String startDescription = "\nThis is the Entrance\n"
                 + "The door to the outside is locked and needs a special password to be unlocked \n"
                 + "South is a grand staircase and East is a hall room";
@@ -24,14 +24,14 @@ public class PlayerTest {
         assertEquals(startDescription, player.getLocation().getDescription());
     }
 
-    @Test
-    public void testGoNorthWhenThereIsNoNorthRoom() {
-        Dungeon d = new Dungeon();
-        Room start = d.createRooms();
-        Player player = new Player("", 0, start);
-        Action.
-
-        boolean result
-        assertFalse(result);
-    }
+//    @Test
+//    public void testGoNorthWhenThereIsNoNorthRoom() {
+//        Dungeon d = new Dungeon();
+//        Room start = d.createRooms();
+//        Player player = new Player("", start);
+//        Action.
+//
+//        boolean result
+//        assertFalse(result);
+//    }
 }

@@ -15,7 +15,7 @@ public class Controller {
         Room start = dungeon.createRooms();
         tui.intro();
         tui.printDesc(start.getDescription());
-        Player p = new Player("", 0, start);
+        Player p = new Player("", start);
         while (true) {
             gameMove(start, p);
         }

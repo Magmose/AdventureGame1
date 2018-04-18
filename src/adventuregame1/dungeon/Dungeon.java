@@ -1,5 +1,7 @@
 package adventuregame1.dungeon;
 
+import Item.Potion;
+
 public class Dungeon {
 
     public Room createRooms() {
@@ -86,8 +88,10 @@ public class Dungeon {
         room3.setSouth(room6);
 
         //rom 4 = billiard room
+        room4.setItemInRoom(new Potion("potion", "health", 30));
         room4.setNorth(room1);
 
+        
         //room 5 = narrow hallway
         room5.setNorth(room2);
         room5.setSouth(room8);
