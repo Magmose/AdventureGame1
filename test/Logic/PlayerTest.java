@@ -12,8 +12,6 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
 
-    Room start;
-
     @Test
     public void testCreatePlayerInStartRoom() {
         Dungeon d = new Dungeon();
@@ -28,8 +26,12 @@ public class PlayerTest {
 
     @Test
     public void testGoNorthWhenThereIsNoNorthRoom() {
+        Dungeon d = new Dungeon();
+        Room start = d.createRooms();
         Player player = new Player("", 0, start);
-        boolean result = player.goEast();
+        Action.
+
+        boolean result
         assertFalse(result);
     }
 }
