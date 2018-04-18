@@ -2,7 +2,6 @@ package adventuregame1;
 
 import adventuregame1.dungeon.Dungeon;
 import adventuregame1.dungeon.Room;
-import java.util.Scanner;
 
 public class Controller {
 

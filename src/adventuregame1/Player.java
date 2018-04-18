@@ -14,7 +14,7 @@ public class Player {
     public Player(String name, Room location) {
         this.name = name;
         this.location = location;
-        health = 10;
+        health = 100;
         damage = 10;
     }
 
@@ -39,7 +39,7 @@ public class Player {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        this.health += health;
     }
 
     public void setLocation(Room location) {
