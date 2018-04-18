@@ -23,7 +23,7 @@ public class Player {
     }
 
     public void setDamage(int damage) {
-        this.damage += damage;
+        this.damage = damage;
     }
 
     public String getName() {
