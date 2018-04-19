@@ -93,7 +93,6 @@ public class Controller {
                     Item s = p.getLocation().getItemInRoom();
                     p.Addinventory(s);
                     System.out.println(p.getInventory());
-                    s.
                     break;
 
                 default:
