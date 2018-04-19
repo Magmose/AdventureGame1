@@ -1,9 +1,5 @@
 package adventuregame1;
 
-/**
- *
- * @author Christian
- */
 class ActionConverter {
 
     Action convertMovement(String dir) {
