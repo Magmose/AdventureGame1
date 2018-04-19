@@ -88,15 +88,19 @@ public class Controller {
                     System.out.println(player.getInventory());
                     String ans = tui.ask();
                     player.UseItemInInventory(ans);
+                    tui.getStats(player);
                     break;
 
                 case PickUp:
                     Item itemCurrentRoom = player.getLocation().getItemInRoom();
                     player.Addinventory(itemCurrentRoom);
-                    System.out.println(player.getInventory());
                     player.getLocation().setItemInRoom(null);
                     break;
-
+                    
+                case GetStats:
+                    tui.getStats(player);
+                    break;
+                    
                 default:
                     break;
             }
@@ -104,10 +108,11 @@ public class Controller {
     }
 
     public void canDeadMenTalk() {
-        System.out.println("virker det her lort");
+    
         if (player.getHealth() <= 0 || player.getLocation().getDescription().equalsIgnoreCase("\nThe roof on this old chateau is slippery.\n"
                 + "You fell to the grond and knocked yourself out. \n"
-                + "it seems like it wont be that easy to escape this old building")) {
+                + "it seems like it wont be that easy to escape this old building\n"
+                + "Press Enter to play again")) {
             tui.youDied();
             this.go();
         }

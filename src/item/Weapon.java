@@ -4,7 +4,7 @@ import adventuregame1.Player;
 
 public class Weapon extends Item {
 
-    private int damage = 20;
+    private int damage;
 
     public Weapon(String name, String description, int damage) {
         super(name, description);

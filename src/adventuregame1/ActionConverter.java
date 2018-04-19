@@ -26,6 +26,8 @@ class ActionConverter {
             return Action.Use;
         } else if (dir.equalsIgnoreCase("pickup")) {
             return Action.PickUp;
+        } else if (dir.equalsIgnoreCase("stats")) {
+            return Action.GetStats;
         } else 
             return null;
         }

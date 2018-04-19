@@ -44,7 +44,8 @@ public class Dungeon {
                 + "\ndo you want to go further through the hallways by going West or North?");
         Room theWindow = new Room("\nThe roof on this old chateau is slippery.\n"
                 + "You fell to the grond and knocked yourself out. \n"
-                + "it seems like it wont be that easy to escape this old building");
+                + "it seems like it wont be that easy to escape this old building\n"
+                + "Press Enter to play again");
         Room room12 = new Room("\n-----This is the Grand Dining Room----- \n"
                 + "There are multiple doors here.\n"
                 + "You can go West to the Study, East to a Bedroom, South to a Ballroom or North to the Kitchen!");
@@ -91,7 +92,7 @@ public class Dungeon {
 
         //rom 4 = billiard room
         room4.setNorth(room1);
-        room4.setItemInRoom(new Potion("potion", "health", 30));
+        room4.setItemInRoom(new Potion("potion", "A health potion that heals for 30 hitpoints", 30));
 
         
         //room 5 = narrow hallway
@@ -139,7 +140,7 @@ public class Dungeon {
 
         //room 14 = the study
         room14.setEast(room12);
-        room14.setItemInRoom(new Weapon("Magic Crossbow", "this crossbow is dangerous!", 30));
+        room14.setItemInRoom(new Weapon("Magic Crossbow", "This magical croosbow is very deadly, and equipping it will set your damage to 30", 30));
 
         //room 15 = the ballroom
         room15.setEast(room19);
@@ -151,7 +152,7 @@ public class Dungeon {
         room16.setEast(room5);  
 
         //room 17 = small bedroom 1
-        room17.setItemInRoom(new Poison("Poison", "this is your last resort", -1000));
+        room17.setItemInRoom(new Poison("Poison", "The poison has a deadly odor, and could be used to end your misery", -1000));
         room17.setNorth(room15);
 
         //room 18 = small bedroom 2

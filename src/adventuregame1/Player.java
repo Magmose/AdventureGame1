@@ -53,7 +53,6 @@ public class Player {
             if (inventory.get(i).getName().equalsIgnoreCase(str)) {
                 inventory.get(i).use(this);
                 inventory.remove(i);
-                System.out.println(getHealth() + " " + getDamage());
             }
         }
     }

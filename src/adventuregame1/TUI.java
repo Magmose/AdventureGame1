@@ -36,16 +36,23 @@ public class TUI {
     }
     
     void youDied(){
-        System.out.println("Weakling you died to such a simple maze!");
+        System.out.println("Weakling you died to such a simple maze!\n");
     }
     
     void quitter() {
-        System.out.println("LOOSER!");
+        System.out.println("LOSER!");
     }
 
     void helper() {
         System.out.println("All you can do in this game is use your compass...\n"
                 + "You can only go north, south, east or west in this game\n"
+                + "Additionally, you can pickup items in your current room by writing \"pickup\"\n"
+                + "If you write \"use\", you'll be able to see what items you currently have in your inventory.\n"
+                + "After that you can write the name of any of the items listed to use or equip them.\n"
                 + "Remember to spell it correctly");
+    }
+
+    void getStats(Player p) {
+        System.out.println("Your current stats are: Damage = "+p.getDamage() +", and Health = "+p.getHealth());
     }
 }
