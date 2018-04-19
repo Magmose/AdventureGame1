@@ -86,7 +86,9 @@ public class Controller {
                     break;
 
                 case Use:
-                    //tilføj use case
+                    System.out.println(player.getInventory());
+                    String ans = tui.ask();
+                    player.UseItemInInventory(ans);
                     break;
 
                 case PickUp:

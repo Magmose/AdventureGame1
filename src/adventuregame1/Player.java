@@ -48,8 +48,18 @@ public class Player {
         this.health += health;
     }
 
-    public void Addinventory(Item s) {
-        inventory.add(s);
+    public void UseItemInInventory(String str) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getName().equalsIgnoreCase(str)) {
+                inventory.get(i).use(this);
+                inventory.remove(i);
+                System.out.println(getHealth() + " " + getDamage());
+            }
+        }
+    }
+
+    public void Addinventory(Item item) {
+        inventory.add(item);
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i) == null) {
                 inventory.remove(i);
