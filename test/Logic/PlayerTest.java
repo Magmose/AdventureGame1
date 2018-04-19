@@ -62,7 +62,7 @@ public class PlayerTest {
         Item item = new Potion("health potion", "heals you ", 4);
         player.Addinventory(item);
         
-        assertEquals("Player inventory", player.getInventory(), item);
+        assertEquals("Player inventory", player.getInventory().toString(), "[" + item.toString() + "]");
     }
     
 }
