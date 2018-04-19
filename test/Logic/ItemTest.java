@@ -10,51 +10,46 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class ItemTest {
-    
-        @Test
+
+    Player player = new Player("", new Room(""));
+
+    @Test
     public void testUseWepon() {
         //Arrange
         Item item = new Weapon("Rusty Sword", "this sword is rusty", 20);
-        Player player = new Player("", new Room(""));
         int expectedDamageResult = 20;
-        
+
         //Act
         item.use(player);
-        
+
         //Assert
         assertEquals(expectedDamageResult, player.getDamage());
     }
-    
-        @Test
+
+    @Test
     public void testUsePotion() {
         //Arrange
         Item item = new Potion("Potion of Life", "taste the rainbow", 20);
-        Player player = new Player("", new Room(""));
         int expectedHealthResult = 120;
-        
+
         //Act
         item.use(player);
-        
+
         //Assert
         assertEquals(expectedHealthResult, player.getHealth());
     }
-    
-    
-    
-            @Test
+
+    @Test
     public void testUsePoison() {
         //Arrange
         Item item = new Poison("Poison of Death", "fuck off", -20);
-        Player player = new Player("", new Room(""));
         int expectedHealthResult = 80;
-        
+
         //Act
         item.use(player);
-        
+
         //Assert
         assertEquals(expectedHealthResult, player.getHealth());
     }
-    
-    
-    
+
 }

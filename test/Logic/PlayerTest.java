@@ -10,12 +10,14 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
 
+    Dungeon d = new Dungeon();
+    Room start = d.createRooms();
+    Player player = new Player("", start);
+
     @Test
     public void testCreatePlayerInStartRoom() {
-        Dungeon d = new Dungeon();
-        Room start = d.createRooms();
-        Player player = new Player("", start);
-        String startDescription = "\nThis is the Entrance\n"
+
+        String startDescription = "\n-----This is the Entrance-----\n"
                 + "The door to the outside is locked and needs a special password to be unlocked \n"
                 + "South is a grand staircase and East is a hall room";
 
@@ -24,9 +26,6 @@ public class PlayerTest {
 
     @Test
     public void testGoNorthWhenThereIsNoNorthRoom() {
-        Dungeon d = new Dungeon();
-        Room start = d.createRooms();
-        Player player = new Player("", start);
 
         boolean result = player.setLocation(start.getNorth());
         assertFalse(result);
@@ -34,35 +33,17 @@ public class PlayerTest {
 
     @Test
     public void testGoSouthWhenThereIsSouthRoom() {
-        Dungeon d = new Dungeon();
-        Room start = d.createRooms();
-        Player player = new Player("", start);
 
         boolean result = player.setLocation(start.getSouth());
         assertTrue(result);
     }
 
     @Test
-    public void testPlayerHealth() {
-        Dungeon d = new Dungeon();
-        Room start = d.createRooms();
-        Player player = new Player("", start);
-        Item item = new Potion("health potion", "heals you", 4);
-
-        item.use(player);
-        assertEquals("Player health modified", player.getHealth(), 104);
-    }
-    
-    
-    @Test
     public void testPlayerInventory() {
-        Dungeon d = new Dungeon();
-        Room start = d.createRooms();
-        Player player = new Player("", start);
         Item item = new Potion("health potion", "heals you ", 4);
         player.Addinventory(item);
-        
+
         assertEquals("Player inventory", player.getInventory().toString(), "[" + item.toString() + "]");
     }
-    
+
 }
