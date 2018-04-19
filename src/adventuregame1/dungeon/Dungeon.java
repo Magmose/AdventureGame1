@@ -44,8 +44,7 @@ public class Dungeon {
                 + "\ndo you want to go further through the hallways by going West or North?");
         Room theWindow = new Room("\nThe roof on this old chateau is slippery.\n"
                 + "You fell to the grond and knocked yourself out. \n"
-                + "it seems like it wont be that easy to escape this old building"
-                + "\ntype north to start over");
+                + "it seems like it wont be that easy to escape this old building");
         Room room12 = new Room("\n-----This is the Grand Dining Room----- \n"
                 + "There are multiple doors here.\n"
                 + "You can go West to the Study, East to a Bedroom, South to a Ballroom or North to the Kitchen!");
@@ -127,7 +126,7 @@ public class Dungeon {
         room11.setWest(room10);
 
         //the window --> Game starts over
-        theWindow.setNorth(start);
+//        theWindow.setNorth(start);
 
         //room 12 = grand dining room
         room12.setNorth(room9);

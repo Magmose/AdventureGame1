@@ -34,7 +34,11 @@ public class TUI {
         System.out.println("No room exists in that direction, try something else adventurer");
         
     }
-
+    
+    void youDied(){
+        System.out.println("Weakling you died to such a simple maze!");
+    }
+    
     void quitter() {
         System.out.println("LOOSER!");
     }

@@ -15,10 +15,8 @@ public class Controller {
     Player player = new Player("", start);
 
     public void go() {
-
         tui.intro();
         tui.printDesc(start.getDescription());
-
         while (true) {
             gameMove(start, player);
         }
@@ -30,6 +28,7 @@ public class Controller {
         String dir = tui.ask();
         movementAction = ac.convertMovement(dir);
         notMovementAction = ac.convertAction(dir);
+        canDeadMenTalk();
 
         while (movementAction == null) {
             handleNotMovement();
@@ -101,6 +100,16 @@ public class Controller {
                 default:
                     break;
             }
+        }
+    }
+
+    public void canDeadMenTalk() {
+        System.out.println("virker det her lort");
+        if (player.getHealth() <= 0 || player.getLocation().getDescription().equalsIgnoreCase("\nThe roof on this old chateau is slippery.\n"
+                + "You fell to the grond and knocked yourself out. \n"
+                + "it seems like it wont be that easy to escape this old building")) {
+            tui.youDied();
+            this.go();
         }
     }
 }
