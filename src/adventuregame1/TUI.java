@@ -56,12 +56,12 @@ public class TUI {
         System.out.println("Your current stats are: Damage = " + p.getDamage() + ", and Health = " + p.getHealth());
     }
 
-    public void printPlayerInventory(Player p) {
-//        String s = null;
-//        for (int i = 0; i > p.getInventory().size(); i++) {
-//            s += "\n" + p.getInventory().get(i);
-//        }
-//        System.out.println(s);
-          System.out.println(p.getInventory());
+    public void inventoryList(Player p) {
+        String result = "\nCurrent Inventory:\n";
+        for (int i = 0; i < p.getInventory().size(); i++) {
+            result += "" + p.getInventory().get(i);
+        }
+        System.out.println(result);
     }
+
 }

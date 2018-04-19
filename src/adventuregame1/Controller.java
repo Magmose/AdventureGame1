@@ -9,7 +9,7 @@ public class Controller {
     TUI tui = new TUI();
     Dungeon dungeon = new Dungeon();
     ActionConverter ac = new ActionConverter();
-    Action movementAction, notMovementAction;
+    Action movementAction, noGameAction;
 
     Room start = dungeon.createRooms();
     Player player = new Player("", start);
@@ -27,20 +27,17 @@ public class Controller {
 
         String dir = tui.ask();
         movementAction = ac.convertMovement(dir);
-        notMovementAction = ac.convertAction(dir);
+        noGameAction = ac.convertAction(dir);
         canDeadMenTalk();
 
         while (movementAction == null) {
-            handleNotMovement();
-            dir = tui.ask();
-            movementAction = ac.convertMovement(dir);
-            notMovementAction = ac.convertAction(dir);
+            handleNotMovement(dir);
         }
-        switchCaseGameMovement(p);
+        handleGameActionMovement(p);
 
     }
 
-    private void switchCaseGameMovement(Player p) {
+    private void handleGameActionMovement(Player p) {
         Room location = p.getLocation();
         Room newLocation = null;
         switch (movementAction) {
@@ -70,11 +67,11 @@ public class Controller {
         tui.printDesc(p.getLocation().getDescription());
     }
 
-    public void handleNotMovement() {
-        if (notMovementAction == null) {
-            tui.errorInput();
+    public void handleNoAction() {
+        if (noGameAction == null) {
+            
         } else {
-            switch (notMovementAction) {
+            switch (noGameAction) {
                 case Help:
                     tui.helper();
                     break;
@@ -84,23 +81,6 @@ public class Controller {
                     System.exit(0);
                     break;
 
-                case Use:
-                    tui.printPlayerInventory(player);
-                    String ans = tui.ask();
-                    player.UseItemInInventory(ans);
-                    tui.getStats(player);
-                    break;
-
-                case PickUp:
-                    Item itemCurrentRoom = player.getLocation().getItemInRoom();
-                    player.Addinventory(itemCurrentRoom);
-                    player.getLocation().setItemInRoom(null);
-                    break;
-                    
-                case GetStats:
-                    tui.getStats(player);
-                    break;
-                    
                 default:
                     break;
             }
@@ -108,13 +88,56 @@ public class Controller {
     }
 
     public void canDeadMenTalk() {
-    
-        if (player.getHealth() <= 0 || player.getLocation().getDescription().equalsIgnoreCase("\nThe roof on this old chateau is slippery.\n"
+
+        if (player.getHealth() <= 0 || player.getLocation().getDescription().equalsIgnoreCase(
+                "\nThe roof on this old chateau is slippery.\n"
                 + "You fell to the grond and knocked yourself out. \n"
                 + "it seems like it wont be that easy to escape this old building\n"
                 + "Press Enter to play again")) {
             tui.youDied();
             this.go();
         }
+    }
+
+    private void handleItemAction() {
+        if (noGameAction == null) {
+            tui.errorInput();
+        } else {
+            switch (noGameAction) {
+                case Use:
+                    useCase();
+                    break;
+
+                case PickUp:
+                    pickupCase();
+                    break;
+
+                case GetStats:
+                    tui.getStats(player);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void useCase() {
+        tui.inventoryList(player);
+        String ans = tui.ask();
+        player.UseItemInInventory(ans);
+    }
+
+    public void pickupCase() {
+        Item itemCurrentRoom = player.getLocation().getItemInRoom();
+        player.Addinventory(itemCurrentRoom);
+        player.getLocation().setItemInRoom(null);
+    }
+    public void handleNotMovement(String dir){
+            handleNoAction();
+            handleItemAction();
+            dir = tui.ask();
+            movementAction = ac.convertMovement(dir);
+            noGameAction = ac.convertAction(dir);
     }
 }

@@ -16,7 +16,7 @@ public class Dungeon {
                 + "From here you can go South to a Narrow Hallway go East up a small staircase or go west to the Grand hall");
         Room room3 = new Room("\n-----This is a grand staircase to the second floor of the house-----\n"
                 + "You can go north to the Entrance or South to a Hallway");
-        Room room4 = new Room("\n-----This is the Billiard Room-----\n "
+        Room room4 = new Room("\n-----This is the Billiard Room-----\n"
                 + "There is nothing here but old furniture and a Posion that heals \n"
                 + "You can go back north");
         Room room5 = new Room("\n-----This is a narrow hallway-----\n"
