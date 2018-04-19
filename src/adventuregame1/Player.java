@@ -11,13 +11,12 @@ public class Player {
     private int damage;
     private Room location;
     private ArrayList<Item> inventory = new ArrayList();
-    
+
     public ArrayList<Item> getInventory() {
         return inventory;
     }
-    
-//    private static final int DAMAGE_FROM_START = 10;
 
+//    private static final int DAMAGE_FROM_START = 10;
     public Player(String name, Room location) {
         this.name = name;
         this.location = location;
@@ -48,16 +47,21 @@ public class Player {
     public void setHealth(int health) {
         this.health += health;
     }
-    
-    public void Addinventory(Item s)
-    {
+
+    public void Addinventory(Item s) {
         inventory.add(s);
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i) == null) {
+                inventory.remove(i);
+            }
+        }
     }
 
     public boolean setLocation(Room location) {
         this.location = location;
-        if (location == null)
+        if (location == null) {
             return false;
+        }
         return true;
     }
 

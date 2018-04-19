@@ -63,5 +63,7 @@ public class Room {
     public void pickupItemInRoom(Item itemInRoom){
         
     }
-
+    public void deleteItemInRoom(Item itemInRoom){
+        itemInRoom = null;
+    }
 }

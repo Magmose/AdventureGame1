@@ -12,7 +12,7 @@ public class Controller {
     Action movementAction, notMovementAction;
 
     Room start = dungeon.createRooms();
-    Player p = new Player("", start);
+    Player player = new Player("", start);
 
     public void go() {
 
@@ -20,7 +20,7 @@ public class Controller {
         tui.printDesc(start.getDescription());
 
         while (true) {
-            gameMove(start, p);
+            gameMove(start, player);
         }
 
     }
@@ -90,9 +90,10 @@ public class Controller {
                     break;
 
                 case PickUp:
-                    Item s = p.getLocation().getItemInRoom();
-                    p.Addinventory(s);
-                    System.out.println(p.getInventory());
+                    Item itemCurrentRoom = player.getLocation().getItemInRoom();
+                    player.Addinventory(itemCurrentRoom);
+                    System.out.println(player.getInventory());
+                    player.getLocation().setItemInRoom(null);
                     break;
 
                 default:
