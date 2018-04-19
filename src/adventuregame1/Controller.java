@@ -85,7 +85,7 @@ public class Controller {
                     break;
 
                 case Use:
-                    System.out.println(player.getInventory());
+                    tui.printPlayerInventory(player);
                     String ans = tui.ask();
                     player.UseItemInInventory(ans);
                     tui.getStats(player);

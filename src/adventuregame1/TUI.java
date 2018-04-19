@@ -32,13 +32,13 @@ public class TUI {
 
     void errorDirection() {
         System.out.println("No room exists in that direction, try something else adventurer");
-        
+
     }
-    
-    void youDied(){
+
+    void youDied() {
         System.out.println("Weakling you died to such a simple maze!\n");
     }
-    
+
     void quitter() {
         System.out.println("LOSER!");
     }
@@ -53,6 +53,15 @@ public class TUI {
     }
 
     void getStats(Player p) {
-        System.out.println("Your current stats are: Damage = "+p.getDamage() +", and Health = "+p.getHealth());
+        System.out.println("Your current stats are: Damage = " + p.getDamage() + ", and Health = " + p.getHealth());
+    }
+
+    public void printPlayerInventory(Player p) {
+//        String s = null;
+//        for (int i = 0; i > p.getInventory().size(); i++) {
+//            s += "\n" + p.getInventory().get(i);
+//        }
+//        System.out.println(s);
+          System.out.println(p.getInventory());
     }
 }
