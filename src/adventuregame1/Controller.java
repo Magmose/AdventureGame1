@@ -1,5 +1,6 @@
 package adventuregame1;
 
+import Item.Item;
 import adventuregame1.dungeon.Dungeon;
 import adventuregame1.dungeon.Room;
 
@@ -10,11 +11,14 @@ public class Controller {
     ActionConverter ac = new ActionConverter();
     Action movementAction, notMovementAction;
 
+    Room start = dungeon.createRooms();
+    Player p = new Player("", start);
+
     public void go() {
-        Room start = dungeon.createRooms();
+
         tui.intro();
         tui.printDesc(start.getDescription());
-        Player p = new Player("", start);
+
         while (true) {
             gameMove(start, p);
         }
@@ -85,10 +89,16 @@ public class Controller {
                     //tilføj use case
                     break;
 
+                case PickUp:
+                    Item s = p.getLocation().getItemInRoom();
+                    p.Addinventory(s);
+                    System.out.println(p.getInventory());
+                    s.
+                    break;
+
                 default:
                     break;
             }
         }
     }
-
 }

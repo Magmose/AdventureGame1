@@ -60,5 +60,8 @@ public class Room {
     public Room getSouth() {
         return south;
     }
+    public void pickupItemInRoom(Item itemInRoom){
+        
+    }
 
 }
