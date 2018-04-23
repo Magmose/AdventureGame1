@@ -11,7 +11,8 @@ public class Player {
     private int damage;
     private Room location, lastLocation;
     private ArrayList<Item> inventory = new ArrayList();
-
+    private boolean cloak = false;
+    
     public ArrayList<Item> getInventory() {
         return inventory;
     }
@@ -54,6 +55,9 @@ public class Player {
                 inventory.get(i).use(this);
                 inventory.remove(i);
             }
+            if(inventory.get(i).getName().equalsIgnoreCase("cloak of levetation")){
+               this.cloak = true;
+            }
         }
     }
 
@@ -86,4 +90,7 @@ public class Player {
         return location;
     }
     
+    public boolean isCloack(){
+        return cloak;
+    }
 }
