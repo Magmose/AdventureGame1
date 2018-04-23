@@ -9,7 +9,7 @@ public class Controller {
     TUI tui = new TUI();
     Dungeon dungeon = new Dungeon();
     ActionConverter ac = new ActionConverter();
-    Action movementAction, noGameAction;
+    Action movementAction, noGameAction, attackAction;
 
     Room start = dungeon.createRooms();
     Player player = new Player("", start);
@@ -28,6 +28,7 @@ public class Controller {
         String dir = tui.ask();
         movementAction = ac.convertMovement(dir);
         noGameAction = ac.convertAction(dir);
+        attackAction = ac.convertAttack(dir);
         canDeadMenTalk();
 
         while (movementAction == null) {
@@ -69,7 +70,7 @@ public class Controller {
 
     public void handleNoAction() {
         if (noGameAction == null) {
-            
+
         } else {
             switch (noGameAction) {
                 case Help:
@@ -87,15 +88,20 @@ public class Controller {
         }
     }
 
-    public void canDeadMenTalk() {
+    public void handleAttackModule() {
+        if (attackAction == null) {
 
-        if (player.getHealth() <= 0 || player.getLocation().getDescription().equalsIgnoreCase(
-                "\nThe roof on this old chateau is slippery.\n"
-                + "You fell to the grond and knocked yourself out. \n"
-                + "it seems like it wont be that easy to escape this old building\n"
-                + "Press Enter to play again")) {
-            tui.youDied();
-            this.go();
+        } else {
+            switch (attackAction) {
+                case Attack:
+                    break;
+
+                case Escape:
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
@@ -122,6 +128,18 @@ public class Controller {
         }
     }
 
+    public void canDeadMenTalk() {
+
+        if (player.getHealth() <= 0 || player.getLocation().getDescription().equalsIgnoreCase(
+                "\nThe roof on this old chateau is slippery.\n"
+                + "You fell to the grond and knocked yourself out. \n"
+                + "it seems like it wont be that easy to escape this old building\n"
+                + "Press Enter to play again")) {
+            tui.youDied();
+            this.go();
+        }
+    }
+
     public void useCase() {
         tui.inventoryList(player);
         String ans = tui.ask();
@@ -133,11 +151,14 @@ public class Controller {
         player.Addinventory(itemCurrentRoom);
         player.getLocation().setItemInRoom(null);
     }
-    public void handleNotMovement(String dir){
-            handleNoAction();
-            handleItemAction();
-            dir = tui.ask();
-            movementAction = ac.convertMovement(dir);
-            noGameAction = ac.convertAction(dir);
+
+    public void handleNotMovement(String dir) {
+        handleNoAction();
+        handleItemAction();
+        handleAttackModule();
+        
+        dir = tui.ask();
+        movementAction = ac.convertMovement(dir);
+        noGameAction = ac.convertAction(dir);
     }
 }

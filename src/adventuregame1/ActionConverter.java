@@ -28,7 +28,18 @@ class ActionConverter {
             return Action.PickUp;
         } else if (dir.equalsIgnoreCase("stats")) {
             return Action.GetStats;
-        } else 
+        } else {
             return null;
         }
+    }
+
+    Action convertAttack(String dir) {
+        if (dir.equalsIgnoreCase("attack")) {
+            return Action.Attack;
+        } else if (dir.equalsIgnoreCase("escape")) {
+            return Action.Escape;
+        } else {
+            return null;
+        }
+    }
 }
