@@ -9,7 +9,7 @@ public class Player {
     private String name;
     private int health;
     private int damage;
-    private Room location;
+    private Room location, lastLocation;
     private ArrayList<Item> inventory = new ArrayList();
 
     public ArrayList<Item> getInventory() {
@@ -67,13 +67,21 @@ public class Player {
     }
 
     public boolean setLocation(Room location) {
+        this.lastLocation = this.location;
         this.location = location;
         if (location == null) {
             return false;
         }
         return true;
     }
-
+    
+    public Room getLastLocation(){
+     if(lastLocation == null){
+        //fix nullpointexp
+     }
+     return this.lastLocation;
+    }
+    
     public Room getLocation() {
         return location;
     }

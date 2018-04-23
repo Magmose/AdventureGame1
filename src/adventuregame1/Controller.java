@@ -97,6 +97,8 @@ public class Controller {
                     break;
 
                 case Escape:
+                    player.setLocation(player.getLastLocation());
+                    tui.printDesc(player.getLocation().getDescription());
                     break;
 
                 default:
@@ -153,12 +155,13 @@ public class Controller {
     }
 
     public void handleNotMovement(String dir) {
+        handleAttackModule();
         handleNoAction();
         handleItemAction();
-        handleAttackModule();
         
         dir = tui.ask();
         movementAction = ac.convertMovement(dir);
         noGameAction = ac.convertAction(dir);
+        attackAction = ac.convertAttack(dir);
     }
 }
