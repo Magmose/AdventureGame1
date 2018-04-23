@@ -1,8 +1,10 @@
 package adventuregame1.dungeon;
 
+import Item.Item;
 import Item.Poison;
 import Item.Potion;
 import Item.Weapon;
+import Item.Cloak;
 
 public class Dungeon {
 
@@ -161,6 +163,8 @@ public class Dungeon {
         //room 19 = small bedroom 3
         room19.setNorth(room15);
 
+        Item item = new Cloak("", "", "");
+        room19.setItemInRoom(new Cloak("", "", "red"));
         return start;
     }
 }
