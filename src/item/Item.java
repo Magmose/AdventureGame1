@@ -27,5 +27,5 @@ public class Item {
     public String toString() {
         return "Item Name: " + name + ", Description: " + description + "\n";
     }
-    
+
 }
