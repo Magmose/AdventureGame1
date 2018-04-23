@@ -49,6 +49,7 @@ public class TUI {
                 + "Additionally, you can pickup items in your current room by writing \"pickup\"\n"
                 + "If you write \"use\", you'll be able to see what items you currently have in your inventory.\n"
                 + "After that you can write the name of any of the items listed to use or equip them.\n"
+                + "If you want too se your current stats just type \"use\"."
                 + "Remember to spell it correctly");
     }
 
