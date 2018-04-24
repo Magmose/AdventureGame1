@@ -29,6 +29,7 @@ public class Controller {
         movementAction = ac.convertMovement(dir);
         noGameAction = ac.convertAction(dir);
         attackAction = ac.convertAttack(dir);
+        //Checker om player har 0hp, eller tabt spillet.
         canDeadMenTalk();
 
         while (movementAction == null) {

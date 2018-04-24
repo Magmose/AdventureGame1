@@ -52,11 +52,11 @@ public class Player {
     public void UseItemInInventory(String str) {
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).getName().equalsIgnoreCase(str)) {
+                if(inventory.get(i).getName().equalsIgnoreCase("cloak")){
+                    this.cloak = true;
+                }
                 inventory.get(i).use(this);
                 inventory.remove(i);
-            }
-            if(inventory.get(i).getName().equalsIgnoreCase("cloak of levetation")){
-               this.cloak = true;
             }
         }
     }
